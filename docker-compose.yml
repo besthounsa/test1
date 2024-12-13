@@ -1,0 +1,52 @@
+services:
+  mariadb:
+    image: "mariadb:latest"
+    restart: always
+    container_name: mariadb
+    volumes:
+      - "./data:/var/lib/mysql"
+      - "./logs:/var/lib/mysql/logs"
+      - "./conf:/etc/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "heticdb"
+      MYSQL_USER: "hetic"
+      MYSQL_PASSWORD: "hetic"
+    ports:
+      - "3307:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    platform: linux/amd64
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - "8081:80"
+    depends_on:
+      - mariadb
+
+  wordpress:
+    image: wordpress:latest
+    platform: linux/amd64
+    container_name: wordpress
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306
+      WORDPRESS_DB_NAME: "heticdb"
+      WORDPRESS_DB_USER: "hetic"
+      WORDPRESS_DB_PASSWORD: "hetic"
+    volumes:
+      - "./wordpress_data:/var/www/html"
+    ports:
+      - "8080:80"
+    depends_on:
+      - mariadb
+
+volumes:
+  data:
+  logs:
+  conf:
+  wordpress_data:
