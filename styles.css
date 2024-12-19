@@ -1,0 +1,60 @@
+/* Styles globaux */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background-color: #f4f4f4;
+  }
+  
+  /* Conteneur de la calculatrice */
+  .calculator {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+  }
+  
+  /* Écran de la calculatrice */
+  .calculator-screen {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: right;
+    border: 1px solid #ccc;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #eee;
+    color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  /* Boutons */
+  .btn {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Bouton zéro large */
+  .btn[style="width: 100%"] {
+    width: calc(100% - 10px);
+  }
+  
